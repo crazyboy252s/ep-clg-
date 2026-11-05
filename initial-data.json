@@ -1,0 +1,280 @@
+{
+  "app": "AttendAI",
+  "schemaVersion": 3,
+  "target": 75,
+  "subjects": [
+    {
+      "id": "pic-cs",
+      "name": "PIC-CS",
+      "short": "PIC-CS",
+      "color": "#9875ff"
+    },
+    {
+      "id": "estud",
+      "name": "ESTUD",
+      "short": "ESTUD",
+      "color": "#35b8a5"
+    },
+    {
+      "id": "boeee",
+      "name": "BOEEE",
+      "short": "BOEEE",
+      "color": "#e5a34b"
+    },
+    {
+      "id": "lalg",
+      "name": "L.ALG",
+      "short": "L.ALG",
+      "color": "#5d9cec"
+    },
+    {
+      "id": "enggphy",
+      "name": "ENGGPHY",
+      "short": "ENGGPHY",
+      "color": "#df7d9c"
+    },
+    {
+      "id": "pic-cs-i",
+      "name": "PIC-CS-I",
+      "short": "PIC-CS-I",
+      "color": "#8bba68"
+    },
+    {
+      "id": "aaitcs",
+      "name": "AAITCS",
+      "short": "AAITCS",
+      "color": "#b58cff"
+    },
+    {
+      "id": "boeee-i",
+      "name": "BOEEE-I",
+      "short": "BOEEE-I",
+      "color": "#f0a45d"
+    },
+    {
+      "id": "epacskls",
+      "name": "EPACSKLS",
+      "short": "EPACSKLS",
+      "color": "#69b7e8"
+    },
+    {
+      "id": "uhval",
+      "name": "UHVAL",
+      "short": "UHVAL",
+      "color": "#4db6ac"
+    },
+    {
+      "id": "enggphy-i",
+      "name": "ENGGPHY-I",
+      "short": "ENGGPHY-I",
+      "color": "#e78aaa"
+    },
+    {
+      "id": "coind",
+      "name": "COIND",
+      "short": "COIND",
+      "color": "#8c9eff"
+    },
+    {
+      "id": "icah",
+      "name": "ICAH",
+      "short": "ICAH",
+      "color": "#c0a0e8"
+    }
+  ],
+  "timetable": {
+    "Monday": [
+      {
+        "subjectId": "aaitcs",
+        "periods": 2
+      },
+      {
+        "subjectId": "boeee",
+        "periods": 1
+      },
+      {
+        "subjectId": "pic-cs-i",
+        "periods": 1
+      },
+      {
+        "subjectId": "uhval",
+        "periods": 1
+      },
+      {
+        "subjectId": "lalg",
+        "periods": 1
+      }
+    ],
+    "Tuesday": [
+      {
+        "subjectId": "estud",
+        "periods": 1
+      },
+      {
+        "subjectId": "coind",
+        "periods": 1
+      },
+      {
+        "subjectId": "lalg",
+        "periods": 1
+      },
+      {
+        "subjectId": "enggphy-i",
+        "periods": 2
+      },
+      {
+        "subjectId": "pic-cs",
+        "periods": 1
+      }
+    ],
+    "Wednesday": [
+      {
+        "subjectId": "pic-cs-i",
+        "periods": 2
+      },
+      {
+        "subjectId": "enggphy",
+        "periods": 1
+      },
+      {
+        "subjectId": "boeee-i",
+        "periods": 2
+      },
+      {
+        "subjectId": "epacskls",
+        "periods": 1
+      }
+    ],
+    "Thursday": [
+      {
+        "subjectId": "epacskls",
+        "periods": 1
+      },
+      {
+        "subjectId": "boeee",
+        "periods": 1
+      },
+      {
+        "subjectId": "enggphy",
+        "periods": 1
+      },
+      {
+        "subjectId": "estud",
+        "periods": 1
+      },
+      {
+        "subjectId": "lalg",
+        "periods": 2
+      }
+    ],
+    "Friday": [
+      {
+        "subjectId": "epacskls",
+        "periods": 2
+      },
+      {
+        "subjectId": "icah",
+        "periods": 1
+      },
+      {
+        "subjectId": "estud",
+        "periods": 1
+      },
+      {
+        "subjectId": "pic-cs-i",
+        "periods": 2
+      }
+    ],
+    "Saturday": [
+      {
+        "subjectId": "aaitcs",
+        "periods": 2
+      },
+      {
+        "subjectId": "lalg",
+        "periods": 1
+      },
+      {
+        "subjectId": "enggphy",
+        "periods": 1
+      },
+      {
+        "subjectId": "coind",
+        "periods": 1
+      },
+      {
+        "subjectId": "estud",
+        "periods": 1
+      }
+    ]
+  },
+  "baseline": {
+    "pic-cs": {
+      "present": 21,
+      "absent": 9,
+      "cancelled": 0
+    },
+    "estud": {
+      "present": 30,
+      "absent": 8,
+      "cancelled": 0
+    },
+    "boeee": {
+      "present": 25,
+      "absent": 3,
+      "cancelled": 0
+    },
+    "lalg": {
+      "present": 49,
+      "absent": 9,
+      "cancelled": 0
+    },
+    "enggphy": {
+      "present": 29,
+      "absent": 11,
+      "cancelled": 0
+    },
+    "pic-cs-i": {
+      "present": 23,
+      "absent": 10,
+      "cancelled": 0
+    },
+    "aaitcs": {
+      "present": 26,
+      "absent": 10,
+      "cancelled": 0
+    },
+    "boeee-i": {
+      "present": 16,
+      "absent": 4,
+      "cancelled": 0
+    },
+    "epacskls": {
+      "present": 29,
+      "absent": 12,
+      "cancelled": 0
+    },
+    "uhval": {
+      "present": 12,
+      "absent": 1,
+      "cancelled": 0
+    },
+    "enggphy-i": {
+      "present": 15,
+      "absent": 0,
+      "cancelled": 0
+    },
+    "coind": {
+      "present": 19,
+      "absent": 3,
+      "cancelled": 0
+    },
+    "icah": {
+      "present": 6,
+      "absent": 4,
+      "cancelled": 0
+    }
+  },
+  "records": {},
+  "sourceNote": "Imported from the user's attendance report dated 04-11-2026, covering 01-08-2026 to 04-11-2026. Only subjects with non-zero conducted hours and an aggregate present/total figure are included. Counts are stored as previous totals in baseline; daily records are empty to prevent double-counting. Subjects with '-' in the report (no reported count) are not added. Weekly timetable seeded from the Vignan Hyderabad Campus Section 10 CSE timetable effective 06-08-2026. Thursday final slot is LALG (T), confirmed by user."
+}

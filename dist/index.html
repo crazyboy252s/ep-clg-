@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10121d">
+<title>AttendAI — Attendance Tracker</title>
+<meta name="description" content="Offline-friendly attendance tracker with timetable, bunk simulator and attendance alerts.">
+  <script type="module" crossorigin src="/assets/index-DTXsuvda.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D4TdDEfV.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-icon">A</div>
+  <div><div class="brand">Attend<span>AI</span></div><div class="brand-sub">YOUR ACADEMIC COMPANION</div></div>
+  <button class="icon-btn" id="settingsShortcut" aria-label="Settings">⚙</button>
+</header>
+<main>
+<section class="page active" id="page-home">
+  <div class="eyebrow" id="homeDateLabel">YOUR ATTENDANCE</div>
+  <h1>Your progress</h1><p class="subtitle">Know where you stand. Stay on track.</p>
+  <div class="card">
+    <div class="row between">
+      <div><div class="eyebrow">OVERALL ATTENDANCE</div><div class="row" style="margin-top:5px"><span class="big-number" id="overallPct">0%</span><span class="pill" id="targetPill">Target 75%</span></div></div>
+      <div style="font-size:38px">🎯</div>
+    </div>
+    <div class="progress"><span id="overallBar" style="width:0%"></span></div>
+    <div class="row between small muted"><span id="overallPresent">0 present</span><span id="overallCounted">0 counted classes</span></div>
+    <p class="hint" id="overallAdvice">Add your subjects and previous totals to get started.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong id="homePresent">0</strong><span>Present</span></div>
+    <div class="stat"><strong id="homeAbsent">0</strong><span>Absent</span></div>
+    <div class="stat"><strong id="homeSubjects">0</strong><span>Subjects</span></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2 style="margin:0">Today</h2><span class="pill" id="todayPill"></span></div>
+    <p class="small muted">Are you going to college today?</p>
+    <div class="choice-grid"><button class="choice yes" id="todayYes">✓ Yes, I'm going</button><button class="choice no" id="todayNo">✕ No, not going</button></div>
+    <p class="hint">Yes opens today's scheduled periods for marking. No marks today's scheduled periods Absent. You can change every period later.</p>
+    <div id="todayQuickStatus"></div>
+  </div>
+  <div class="card"><div class="card-head"><h2 style="margin:0">Subject overview</h2><button class="btn secondary sm" data-go="subjects">Manage</button></div><div id="homeSubjectList"></div></div>
+</section>
+
+<section class="page" id="page-subjects">
+  <div class="eyebrow">YOUR COURSE LIST</div><h1>Subjects</h1><p class="subtitle">Set up your subjects and enter the attendance you already have.</p>
+  <div class="card">
+    <h2 id="subjectFormHeading">Add a subject</h2>
+    <div class="field"><label for="subjectName">Subject name</label><input id="subjectName" maxlength="60" placeholder="e.g. Engineering Mathematics"></div>
+    <div class="form-grid">
+      <div class="field"><label for="subjectShort">Short name (optional)</label><input id="subjectShort" maxlength="20" placeholder="Maths"></div>
+      <div class="field"><label for="subjectColor">Color</label><input type="color" id="subjectColor" value="#9875ff"></div>
+    </div>
+    <button class="btn full" id="saveSubjectBtn">＋ Save subject</button>
+    <button class="btn secondary full" id="cancelSubjectEdit" hidden style="margin-top:8px">Cancel edit</button>
+    <p class="hint">Subject names can be changed later without losing attendance.</p>
+  </div>
+  <div class="card"><h2>Previous attendance totals</h2>
+    <div class="inline-note">Enter classes attended, absent and cancelled before using AttendAI. These are stored separately from daily records, so they are never added twice.</div>
+    <div id="baselineEditors"></div>
+  </div>
+  <div class="card"><h2>Your subjects</h2><div id="subjectList"></div></div>
+</section>
+
+<section class="page" id="page-attendance">
+  <div class="eyebrow">DAILY RECORDS</div><h1>Attendance</h1><p class="subtitle">Mark or correct any date, including previous days.</p>
+  <div class="card">
+    <div class="field"><label for="attendanceDate">Choose date</label><input type="date" id="attendanceDate"></div>
+    <div id="dateRecordPanel"></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2 style="margin:0">Attendance calendar</h2><input id="calendarMonth" type="month" style="max-width:155px;background:#111521;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px"></div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="divider"></div>
+    <div class="legend"><span><i style="background:#55d6a0"></i>Present day</span><span><i style="background:#ff7489"></i>Absent day</span><span><i style="background:#f2c66d"></i>Holiday</span><span><i style="background:#9a7bff"></i>Record</span></div>
+  </div>
+  <div class="card"><h2>Recent records</h2><div id="recentRecords"></div></div>
+</section>
+
+<section class="page" id="page-timetable">
+  <div class="eyebrow">WEEKLY SCHEDULE</div><h1>Timetable</h1><p class="subtitle">Tell AttendAI how many periods each subject has on each day.</p>
+  <div class="card">
+    <h2>Add or update timetable</h2>
+    <div class="field"><label for="ttDay">Weekday</label><select id="ttDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
+    <div class="field"><label for="ttSubject">Subject</label><select id="ttSubject"><option value="">Add a subject first</option></select></div>
+    <div class="field"><label for="ttPeriods">Periods per day</label><input type="number" id="ttPeriods" min="1" max="15" value="1" inputmode="numeric"></div>
+    <button class="btn full" id="saveTimetableBtn">＋ Save timetable entry</button>
+    <p class="hint">If the subject already exists on that weekday, saving updates its period count instead of creating a duplicate.</p>
+  </div>
+  <div id="weeklyTimetable"></div>
+</section>
+
+<section class="page" id="page-simulator">
+  <div class="eyebrow">PLAN BEFORE YOU MISS CLASS</div><h1>Bunk simulator</h1><p class="subtitle">Check the effect of missing upcoming classes.</p>
+  <div class="card">
+    <div class="field"><label for="simSubject">Subject</label><select id="simSubject"><option value="">Add subjects first</option></select></div>
+    <div class="form-grid"><div class="field"><label for="simAttend">Classes you will attend</label><input id="simAttend" type="number" min="0" max="200" value="0" inputmode="numeric"></div><div class="field"><label for="simMiss">Classes you might bunk</label><input id="simMiss" type="number" min="0" max="200" value="1" inputmode="numeric"></div></div>
+    <div class="row between"><span class="muted">Projected attendance</span><strong class="big-number" id="simProjected">—</strong></div>
+    <div class="progress"><span id="simBar" style="width:0%"></span></div>
+    <p class="hint" id="simExplanation">Select a subject to simulate your attendance.</p>
+    <div class="divider"></div>
+    <div class="row between"><span class="small muted">Consecutive absences before falling below target</span><strong id="maxBunks">—</strong></div>
+    <div class="row between" style="margin-top:8px"><span class="small muted">Classes to attend to reach target</span><strong id="classesNeeded">—</strong></div>
+    <div class="zone-key"><span class="zone-badge safe">SAFE ≥75%</span><span class="zone-badge warning">WARNING 60–74.9%</span><span class="zone-badge danger">DANGER &lt;60%</span></div><p class="hint">These are mathematical projections from your recorded totals. They assume no other classes are added or cancelled. Cancelled classes do not affect the percentage.</p>
+  </div>
+</section>
+
+<section class="page" id="page-settings">
+  <div class="eyebrow">PREFERENCES & BACKUP</div><h1>Settings</h1><p class="subtitle">Your attendance data stays in this browser unless you export it.</p>
+  <div class="card"><h2>Attendance target</h2><p class="hint">Warning thresholds: below 75% is WARNING; below 60% is DANGER. Your target is editable separately.</p><div class="field"><label for="targetInput">Minimum attendance percentage</label><input type="number" id="targetInput" min="1" max="100" value="75" inputmode="numeric"></div><button class="btn full" id="saveTargetBtn">Save target</button></div>
+  <div class="card"><h2>Backup and reports</h2><p class="hint">Export a JSON backup to preserve your full data. CSV is useful for spreadsheets.</p><button class="btn full" id="exportJsonBtn">↓ Export full backup (JSON)</button><button class="btn secondary full" id="exportCsvBtn" style="margin-top:8px">▤ Export attendance report (CSV)</button><div class="field"><label for="importFile">Restore from JSON backup</label><input id="importFile" type="file" accept=".json,application/json"></div><button class="btn secondary full" id="importJsonBtn">Import backup</button></div>
+  <div class="card"><h2>Storage information</h2><p class="hint">AttendAI saves data in local browser storage on this device. It does not sync to other phones automatically. Clearing browser/site data can erase records. Export backups regularly.</p><button class="btn danger full" id="clearDataBtn">Delete all AttendAI data</button></div>
+  <div class="card"><h2>About this version</h2><p class="hint">AttendAI v3 · Offline-friendly static web app · No account or server required for attendance tracking.</p></div>
+</section>
+</main>
+
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="active" data-page="home"><span class="navicon">⌂</span>Home</button>
+  <button data-page="subjects"><span class="navicon">▤</span>Subjects</button>
+  <button data-page="attendance"><span class="navicon">▦</span>Attendance</button>
+  <button data-page="timetable"><span class="navicon">◷</span>Timetable</button>
+  <button data-page="simulator"><span class="navicon">⌁</span>Simulator</button>
+  <button data-page="settings"><span class="navicon">⚙</span>Settings</button>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>
